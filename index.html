@@ -1,0 +1,65 @@
+
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>TOŁDI GRZYBIARZ V168</title><link rel="stylesheet" href="style.css?v=168"></head>
+<body>
+<div id="wrap">
+<canvas id="game"></canvas>
+<div id="hud">
+ <div id="level" class="panel">Poziom 1/5</div>
+ <div id="mush" class="panel">🍄 0/0</div>
+ <div id="effects" class="panel" aria-live="polite"></div>
+ <div id="bossHud"><div style="font-size:12px;margin-bottom:3px">👑 KRÓL PRAWDZIWKÓW</div><div id="bossBar"><div id="bossFill"></div></div></div>
+ <div id="msg"></div>
+</div>
+<div id="controls" aria-label="32-kierunkowy joystick">
+ <div id="joystick" role="application" aria-label="Joystick 32 kierunków">
+  <div id="joystickRing"></div>
+  <div id="joystickKnob"></div>
+ </div>
+</div>
+<button id="attack">ATAK</button>
+<div id="title" aria-label="Ekran startowy"><div class="menu-blur-bg" aria-hidden="true"></div><div class="menu-sharp-bg" aria-hidden="true"></div><h1>TOŁDI GRZYBIARZ</h1><h2>V168 — BELZEBUB: BOROWIK SZATAŃSKI</h2>
+<p>5 poziomów • rzeki • 3 mosty • strażnik • dzik • Król Prawdziwków • Belzebub • Mondeo • Biedronka</p>
+<p class="small">Sterowanie: 32-kierunkowy joystick dotykowy lub strzałki. Na poziomie 5 przycisk ATAK.</p>
+<button id="start">START GRY</button></div>
+
+<div id="mainButtons">
+ <button id="settingsBtn">USTAWIENIA</button>
+ <button id="creatorsBtn">TWÓRCY</button>
+</div>
+<div id="settings" class="subscreen">
+ <div class="subpanel">
+  <h2>⚙️ USTAWIENIA</h2>
+  <h3>Wybór poziomu trudności</h3>
+  <button class="difficulty" data-diff="easy">Łatwy<br><small>Sielanka na Barwinku</small></button>
+  <button class="difficulty" data-diff="normal">Normalny<br><small>Grzybiorz w lesie na balecie</small></button>
+  <button class="difficulty" data-diff="hard">Trudny<br><small>Wrota Piekieł na Cergowskiej</small></button>
+  <button class="difficulty" data-diff="ultra">Ultra Trudny<br><small>Koszmar Grzybiorza<br>Dla największych Hardcorów. Odkryj sekret Cergowskiej.</small></button>
+  <button id="settingsBack" class="backBtn">WRÓĆ</button>
+ </div>
+</div>
+<div id="creators" class="subscreen">
+ <div class="subpanel">
+  <h2>🎮 TWÓRCY GRY</h2>
+  <p><b>Project Manager and Engineering:</b><br>MiskoV</p>
+  <p><b>Tester jakości:</b><br>KRZYŚ</p>
+  <p><b>Zgoda na publikację wizerunku:</b><br>TOŁDI<br><small>(dostał za to Żubrówkę Jabłuszko)</small></p>
+  <p><b>Wypił dziś 15 piw i jeszcze nie spadł:</b><br>Morcin</p>
+  <p><b>Oraz Twoja stara!!</b> 😎</p>
+  <button id="creatorsBack" class="backBtn">WRÓĆ</button>
+  <button id="debugMushroomBtn" class="debugMushroomBtn" aria-label="Tryb debugowania">🍄</button>
+ </div>
+</div>
+<div id="debugScreen" class="subscreen"><div class="subpanel debugPanel"><h2>🛠️ TRYB DEBUGOWANIA</h2><p>Menu testowe gry.</p><button id="debugLevelBtn" class="debugMainOption">🎯 WYBÓR POZIOMU</button><button id="debugScenesBtn" class="debugMainOption">🎬 SCENKI PRZERYWNIKOWE</button><button id="debugBack" class="backBtn">WRÓĆ DO TWÓRCÓW</button></div></div>
+<div id="debugLevelScreen" class="subscreen"><div class="subpanel debugPanel"><h2>🎯 WYBÓR POZIOMU</h2><div class="debugSwitches"><label class="debugSwitch"><span>💥 Pociski przeciwników</span><input id="debugProjectileToggle" type="checkbox"><i></i></label><label class="debugSwitch"><span>🐗 Dzik</span><input id="debugBoarToggle" type="checkbox"><i></i></label><label class="debugSwitch"><span>♾️ Nieskończone kontynuacje</span><input id="debugInfiniteContinuesToggle" type="checkbox"><i></i></label></div><div id="debugLevels"></div><button id="debugLevelBack" class="backBtn">WRÓĆ</button></div></div><div id="debugScenesScreen" class="subscreen"><div class="subpanel debugPanel debugScenesPanel"><h2>🎬 SCENKI PRZERYWNIKOWE</h2><p>Spis scenek w kolejności występowania w grze. Dotknij scenki, aby zobaczyć pełny podgląd.</p><div id="debugScenes"></div><button id="debugScenesBack" class="backBtn">WRÓĆ</button></div></div><div id="debugSceneViewer" class="subscreen debugViewer"><div class="debugViewerPanel"><button id="debugSceneClose" class="debugCloseBtn">✕</button><div id="debugSceneTitle"></div><img id="debugSceneImage" src="" alt="Podgląd scenki"><div class="debugViewerHint">PODGLĄD — bez uruchamiania scenki</div></div></div>
+<div id="storyScreen" aria-label="Przerywnik fabularny"><img id="storyImage" src="story-comic.png" alt="Przerywnik fabularny"><div id="storyTop"><span id="storyTimer">15</span></div><button id="storySkip">POMIŃ</button></div>
+<button id="introSkip">POMIŃ</button><button id="pauseBtn" aria-label="Pauza">Ⅱ</button>
+<div id="pauseScreen" class="subscreen"><div class="subpanel"><h2>⏸️ PAUZA</h2><button id="resumeBtn" class="backBtn">WZNÓW ROZGRYWKĘ</button><button id="pauseMenuBtn" class="backBtn">POWRÓT DO MENU</button></div></div>
+<div id="continueScreen" class="subscreen"><div class="subpanel deathpanel"><h2>Kontynuować?</h2><div class="mordo">Czy jesteś za słaby Mordo?!</div><div id="continueCount" class="countdown">9</div><div id="continuesLeft" class="lives">Kontynuacje: 3</div><button id="continueBtn" class="backBtn">KONTYNUUJ MORDO!</button></div></div>
+<div id="gameover"><h1>GAME OVER</h1><p id="overText">Tołdi został złapany!</p><button id="retry">SPRÓBUJ PONOWNIE</button></div>
+<div id="win"><h1>🏆 WYGRANA!</h1><p>Tołdi zebrał wszystkie grzyby i pokonał Króla Prawdziwków!</p><button id="again">ZAGRAJ JESZCZE RAZ</button></div>
+</div>
+<script src="game.js?v=168"></script>
+</body></html>
